@@ -16,7 +16,7 @@ jobs:
           java-version: '11'
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: 'stable'
+          flutter-version: '3.35.6'
       - run: flutter pub get
         working-directory: ./fuel_tracker_app
       - run: flutter build apk --release
