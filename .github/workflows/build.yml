@@ -21,7 +21,7 @@ jobs:
         working-directory: ./fuel_tracker_app
       - run: flutter build apk --release
         working-directory: ./fuel_tracker_app
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: release-apk
           path: fuel_tracker_app/build/app/outputs/flutter-apk/app-release.apk
