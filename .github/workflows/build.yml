@@ -1,0 +1,27 @@
+name: Build Flutter APK
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.3.10'
+      - run: flutter pub get
+        working-directory: ./fuel_tracker_app
+      - run: flutter build apk --release
+        working-directory: ./fuel_tracker_app
+      - uses: actions/upload-artifact@v3
+        with:
+          name: release-apk
+          path: fuel_tracker_app/build/app/outputs/flutter-apk/app-release.apk
